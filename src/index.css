@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: var(--brand-primary);
+  --color-bg-main: var(--bg-main);
+  --color-bg-surface: var(--bg-surface);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --brand-primary: #4A90E2;
+  --bg-main: #050505;
+  --bg-surface: #1A1A1A;
+  --text-main: #E8EAEF;
+  --text-muted: rgba(232, 234, 239, 0.5);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+:root.light {
+  --bg-main: #F8F9FA;
+  --bg-surface: #FFFFFF;
+  --text-main: #1A1A1A;
+  --text-muted: rgba(26, 26, 26, 0.6);
+  --border-subtle: rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-main text-text-main font-sans antialiased transition-colors duration-300;
+  }
+}
+
+.glass-panel {
+  @apply bg-bg-surface/40 backdrop-blur-xl border border-border-subtle rounded-3xl transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-brand-primary hover:opacity-90 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-brand-primary/20 hover:shadow-brand-primary/30 active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply border border-border-subtle bg-bg-surface/5 hover:bg-bg-surface/10 text-text-main px-8 py-4 rounded-xl font-semibold transition-all duration-300 active:scale-[0.98];
+}
+
+.section-container {
+  @apply max-w-7xl mx-auto px-6 py-32;
+}
+
+.heading-xl {
+  @apply text-6xl md:text-8xl font-extrabold tracking-tighter leading-[1.1];
+}
+
+.heading-lg {
+  @apply text-4xl md:text-6xl font-bold tracking-tight leading-tight;
+}
+
+.text-muted {
+  @apply text-text-muted leading-relaxed;
+}
+
+.nav-link {
+  @apply text-sm font-medium text-text-muted hover:text-text-main transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full;
+}
